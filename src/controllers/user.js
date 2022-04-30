@@ -1,4 +1,4 @@
-const { createUser, searchUser, updateUser } = require("../database/user");
+const { createUser, searchUser, updateUser } = require("../service/user");
 
 // 登录
 const login = async (ctx) => {
@@ -8,10 +8,11 @@ const login = async (ctx) => {
     return;
   }
   try {
-    await searchUser(id, password);
+    const user = await searchUser(id, password);
     ctx.body = {
       status: true,
-      data: "登录成功",
+      msg: "登录成功",
+      data: user[0],
     };
   } catch (e) {
     ctx.body = { status: false, msg: e };

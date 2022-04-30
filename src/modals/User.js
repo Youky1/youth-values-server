@@ -12,9 +12,5 @@ const User = sequelize.define("User", {
     type: STRING,
     allowNull: false,
   },
-  name: {
-    type: STRING,
-    allowNull: true,
-  },
 });
 module.exports = User;

@@ -8,5 +8,4 @@ const config = {
   dialect: "mysql",
 };
 const sequelize = new Sequelize(config);
-console.log("sequelize"), sequelize;
 module.exports = sequelize;
