@@ -1,4 +1,9 @@
-const { createUser, searchUser, updateUser } = require("../service/user");
+const {
+  createUser,
+  searchUser,
+  updateUser,
+  removehUser,
+} = require("../service/user");
 
 // 登录
 const login = async (ctx) => {
@@ -30,15 +35,25 @@ const signup = async (ctx) => {
   }
 };
 
-// 修改个人信息
+// 修改密码
 const update = async (ctx) => {
-  const { id, password, newId, newPassword } = ctx.request.body;
+  const { id, password, newPassword } = ctx.request.body;
   try {
-    await updateUser(id, password, newId, newPassword);
+    await updateUser(id, password, newPassword);
     ctx.body = { status: true, data: "修改成功" };
   } catch (e) {
     ctx.body = { status: false, msg: "修改失败：", e };
   }
 };
 
-module.exports = { login, signup, update };
+const remove = async (ctx) => {
+  const { id, password } = ctx.request.body;
+  try {
+    await removehUser(id, password);
+    ctx.body = { status: true, data: "注销成功" };
+  } catch (e) {
+    ctx.body = { status: false, msg: "注销失败：" + e };
+  }
+};
+
+module.exports = { login, signup, update, remove };

@@ -37,21 +37,21 @@ const searchUser = async (id, password) => {
   }
 };
 
-const removehUser = async (id) => {
+const removehUser = async (id, password) => {
   try {
     const users = await User.destroy({
-      where: { id },
+      where: { id, password },
     });
-    return users.length > 0 ? Promise.resolve(users) : Promise.reject();
+    return users > 0 ? Promise.resolve() : Promise.reject();
   } catch (e) {
     return Promise.reject(e);
   }
 };
 
-const updateUser = async (id, password, newId, newPassword) => {
+const updateUser = async (id, password, newPassword) => {
   try {
     const users = await User.update(
-      { id: newId, password: newPassword },
+      { password: newPassword },
       {
         where: { id, password },
       }
