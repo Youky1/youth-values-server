@@ -2,7 +2,7 @@ const sequelize = require("../config/instance");
 const {
   DataTypes: { STRING, TEXT },
 } = require("sequelize");
-const Group = sequelize.define("Group", {
+const Teams = sequelize.define("Teams", {
   id: {
     type: STRING,
     allowNull: false,
@@ -13,4 +13,4 @@ const Group = sequelize.define("Group", {
   users: { type: TEXT, allowNull: false },
   createDate: STRING,
 });
-module.exports = Group;
+module.exports = Teams;
