@@ -20,6 +20,7 @@ const login = async (ctx) => {
       data: user[0],
     };
   } catch (e) {
+    console.log(e);
     ctx.body = { status: false, msg: e };
   }
 };

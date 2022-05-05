@@ -1,5 +1,6 @@
 // 建表
-const initModals = require("../modals/User");
+const User = require("../modals/User");
+const Group = require("../modals/Group");
 const sequelize = require("./instance");
 const init = async () => {
   try {

@@ -2,7 +2,6 @@ const fs = require("fs");
 const path = require("path");
 const basePath = path.join(__dirname, "controllers");
 const files = fs.readdirSync(basePath);
-const koaBody = require("koa-body");
 
 const createRouter = (router) => {
   files.forEach((file) => {

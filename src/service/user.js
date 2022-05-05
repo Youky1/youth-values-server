@@ -2,14 +2,12 @@ const User = require("../modals/User");
 
 const createUser = async (id, password) => {
   try {
-    console.log("createUser: ");
     const users = await User.findAll({
       where: {
         id,
         password,
       },
     });
-    console.log("users: ", users.length);
     if (users.length > 0) {
       return Promise.reject("账号已存在");
     }
@@ -22,12 +20,15 @@ const createUser = async (id, password) => {
 };
 
 const searchUser = async (id, password) => {
-  try {
-    const users = await User.findAll({
-      where: {
+  const where = password
+    ? {
         id,
         password,
-      },
+      }
+    : { id };
+  try {
+    const users = await User.findAll({
+      where,
     });
     return users.length > 0
       ? Promise.resolve(users)
