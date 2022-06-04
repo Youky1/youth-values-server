@@ -2,6 +2,7 @@
 const Task = require("../modals/Task");
 const User = require("../modals/User");
 const Teams = require("../modals/Teams");
+const TaskRecord = require("../modals/TaskRecord");
 const sequelize = require("./instance");
 const init = async () => {
   try {
